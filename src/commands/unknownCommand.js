@@ -6,14 +6,16 @@ class UnknownCommand extends BaseCommand {
   async execute() {
     super.execute();
 
-    const response = `Unknown Command: ${this.params.command}`;
-    const msg = await this.params.channel.send(response);
-    debug(`Sent -> ${response}`);
-    logger.info(`Sent -> ${response}`);
+    if (this.params.command !== 'play' && this.params.command !== 'skip' && this.params.command !== 'clear') { // BORRAR CUANDO SE RESUELVA EL PREFIX
+      const response = `Unknown Command: ${this.params.command}`;
+      const msg = await this.params.channel.send(response);
+      debug(`Sent -> ${response}`);
+      logger.info(`Sent -> ${response}`);
 
-    setTimeout(() => {
-      msg.delete().catch(() => {});
-    }, 5000);
+      setTimeout(() => {
+        msg.delete().catch(() => {});
+      }, 5000);
+    }
   }
 }
 
