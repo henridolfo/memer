@@ -19,6 +19,7 @@ function onReady() {
 function onMessage(message) {
   if (message.author.bot) return;
   if (!message.content.startsWith(config.prefix)) return;
+  if (message.content.startsWith(`${config.prefix}play`) || message.content.startsWith(`${config.prefix}skip`) || message.content.startsWith(`${config.prefix}clear`)) return; // BORRAR CUANDO SE RESUELVA EL PREFIX
 
   debug(`Received message from ${message.author.username} -> ${message.content}`);
   logger.info(`Received message from ${message.author.username} -> ${message.content}`);
