@@ -25,6 +25,8 @@ class HelpMeCommand extends BaseCommand {
       + '!goat2 -> Play goat2 audio\n'
       + '!kaiba -> Play kaiba audio\n'
       + '!night -> Play into the night audio\n'
+      + '!pushme -> Play push me audio\n'
+      + '!patineta -> Play patineta audio\n'
       + '!train -> Play train audio';
 
     this.params.channel.send(response);

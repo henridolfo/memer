@@ -43,6 +43,8 @@ function resolve(message, client) {
     case 'gaius_intro':
     case 'cubilla_intro':
     case 'niko_intro':
+    case 'pushme':
+    case 'patineta':
       params.voiceChannel = message.member.voiceChannel;
       params.guild = message.guild;
       c = new PlayAudioCommand(params);
