@@ -67,6 +67,15 @@ class ChangeIntrosBehaviour extends BaseCommand {
           case '183765735573684224': // NIKO
             commandAudio = 'niko_intro';
             break;
+          case '197151757611171840': // ALTERA
+            commandAudio = 'altera_intro';
+            break;
+          case '132252044693078016': // MEGADAVE
+            commandAudio = 'mega_intro';
+            break;
+          case '233346080354467841': // VULIAN
+            commandAudio = 'vulian_intro';
+            break;
           default:
             commandAudio = 'hola';
             break;

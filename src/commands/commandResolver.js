@@ -28,6 +28,7 @@ function resolve(message, client) {
 
   switch (command) {
     case 'yes':
+    case 'yos':
     case 'shutup':
     case 'friend':
     case 'hola':
@@ -43,15 +44,80 @@ function resolve(message, client) {
     case 'gaius_intro':
     case 'cubilla_intro':
     case 'niko_intro':
+    case 'altera_intro':
+    case 'mega_intro':
+    case 'vulian_intro':
     case 'pushme':
     case 'patineta':
     case 'bark':
+    case 'gijoe':
+    case 'thomas':
+    case 'haha':
+	case 'dinodoggo':
+	case 'barkcore':
+	case 'wallace':
+	case 'dinopain':
+	case 'newtoy':
+	case 'mrbubbs':
+	case 'cigarrillo':
+	case 'sombrero':
+	case 'bondi':
+	case 'karaka':
+	case 'karaka2':
+	case 'amigo':
+	case 'pinpin':
+	case 'doping':
+	case 'quepasaaca':
+	case 'quepuasaaca':
+	case 'chavo':
+	case 'chavo2':
+	case 'chavo3':
+	case 'monokuma':
+	case 'fuckyouup':
+	case 'wrong':
+	case 'nagito':
+	case 'basta':
+	case 'basta2':
+	case 'ah':
+	case 'buenisimo':
+	case 'punch':
+	case 'bobby':
+	case 'fly':
+	case 'celebrity':
+	case 'preston':
+	case 'holdon':
+	case 'hum':
+	case 'hum2':
+	case 'hum3':
+	case 'cubille':
+	case 'cubilla':
+	case 'skills':
+	case 'vampire':
+	case 'jurio':
+	case 'loquendo':
+	case 'thicc':
+	case 'superthicc':
+	case 'at':
+	case 'what':
+	case 'superwhat':
+	case 'works':
+	case 'gustavo':
+	case 'why':
+	case 'why2':
+	case 'reflection':
+	case 'spase':
+	case 'afilador':
+	case 'hdp':
+	case 'dedito':
+	case 'megadave':
+	case 'samid':
+	case 'atelier':
+	case '311':
       params.voiceChannel = message.member.voiceChannel;
       params.guild = message.guild;
       c = new PlayAudioCommand(params);
       break;
     case 'leavechannel':
-      params.voiceChannel = message.member.voiceChannel;
       c = new LeaveCommand(params);
       break;
     case 'helpme':

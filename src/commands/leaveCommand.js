@@ -2,13 +2,31 @@ const debug = require('debug')('E:LeaveCommand');
 const BaseCommand = require('./baseCommand');
 const logger = require('../logger');
 
+let guild;
+
 class LeaveCommand extends BaseCommand {
+  constructor(params) {
+    super(params);
+    if (!guild) {
+      guild = this.params.client.guilds.first();
+    }
+  }
+  
   execute() {
     super.execute();
-
-    this.params.voiceChannel.leave();
-    debug(`Left -> ${this.params.voiceChannel.name}`);
-    logger.info(`Left -> ${this.params.voiceChannel.name}`);
+	
+	if (guild && guild.voiceConnection && guild.voiceConnection.channel) {
+	  try {
+		const { name } = guild.voiceConnection.channel;
+		guild.voiceConnection.channel.leave();
+		
+		debug(`Left -> ${name}`);
+        logger.info(`Left -> ${name}`);
+	  } catch (e) {
+		debug(e);
+		logger.error(e.message);
+	  }
+	}
   }
 }
 

@@ -6,14 +6,20 @@ const config = require('../config/config.json');
 const commandResolver = require('./commands/commandResolver');
 const ChangeIntrosBehaviourCommand = require('./commands/changeIntrosBehaviourCommand');
 
+const ayuwoki = require('./crons/ayuwoki');
+const schedule = require('node-schedule');
+
 const client = new Discord.Client();
 
 function onReady() {
   debug('Bot has started');
   logger.info('Bot has started');
 
-  const command = new ChangeIntrosBehaviourCommand({ client, activate: true, fromBot: true });
+  const command = new ChangeIntrosBehaviourCommand({ client, activate: false, fromBot: true });
   command.execute();
+  
+  // Solo para que funcione el ayuwoki
+  schedule.scheduleJob('33 6 * * *', ayuwoki(client));
 }
 
 function onMessage(message) {
