@@ -10,7 +10,7 @@ class PlayAudioCommand extends BaseCommand {
   finishPlay(dispatcher, audioFile) {
     debug(`Finishing audio -> ${audioFile}`);
     logger.info(`Finishing audio -> ${audioFile}`);
-    dispatcher.destroy();
+    if (dispatcher) dispatcher.destroy();
     ready = true;
   }
 
