@@ -60,4 +60,13 @@ typings/
 # next.js build output
 .next
 
-/logs
+# forever
+.foreverignore
+
+keys/
+
+build/
+
+img/
+
+audio/

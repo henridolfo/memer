@@ -1,22 +1,18 @@
 {
-  "name": "e",
+  "name": "memer",
   "version": "1.0.0",
-  "description": "E",
+  "description": "memer",
   "main": "./src/index.js",
   "scripts": {
     "debug": "set DEBUG=E,E:* & node ./src/index.js",
-    "start": "forever start ./config/forever/production.json",
+    "start": "node ./src/index.js",
     "lint": "eslint --init",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@git.bitral.com:henridolfo/E.git"
-  },
   "keywords": [
-    "E"
+    "memer"
   ],
-  "author": "E",
+  "author": "henridolfo",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^4.19.1",
@@ -32,6 +28,7 @@
     "node-opus": "^0.3.0",
     "node-schedule": "^1.3.2",
     "nodemon": "^1.18.3",
+    "request": "^2.88.0",
     "winston": "^3.0.0"
   }
 }

@@ -1,25 +1,33 @@
+const fs = require('fs');
+const path = require('path');
 const Discord = require('discord.js');
 const debug = require('debug')('E');
 const logger = require('./logger');
-
 const config = require('../config/config.json');
-const commandResolver = require('./commands/commandResolver');
+const credentials = require('../keys/discord-credentials.json');
 const ChangeIntrosBehaviourCommand = require('./commands/changeIntrosBehaviourCommand');
+const commandResolver = require('./commands/commandResolver');
 
-const ayuwoki = require('./crons/ayuwoki');
-const schedule = require('node-schedule');
+let audioNames;
+
+// Read all audio files
+fs.readdir(path.join(__dirname, '..', 'audio'), (err, filenames) => {
+  if (err) {
+    logger.info(err);
+    return;
+  }
+
+  audioNames = filenames.map(v => v.toLowerCase().substring(0, v.indexOf('.')));
+});
 
 const client = new Discord.Client();
 
 function onReady() {
-  debug('Bot has started');
-  logger.info('Bot has started');
+  debug('Memer Bot has started');
+  logger.info('Memer Bot has started');
 
   const command = new ChangeIntrosBehaviourCommand({ client, activate: false, fromBot: true });
   command.execute();
-  
-  // Solo para que funcione el ayuwoki
-  schedule.scheduleJob('33 6 * * *', ayuwoki(client));
 }
 
 function onMessage(message) {
@@ -30,10 +38,14 @@ function onMessage(message) {
   debug(`Received message from ${message.author.username} -> ${message.content}`);
   logger.info(`Received message from ${message.author.username} -> ${message.content}`);
 
-  const command = commandResolver(message, client);
-  command.execute();
+  const command = commandResolver(message, client, audioNames);
+  command.execute((res) => {
+    if (res) {
+      audioNames.push(res);
+    }
+  });
 }
 
 client.on('ready', onReady);
 client.on('message', onMessage);
-client.login(config.token);
+client.login(credentials.token);
